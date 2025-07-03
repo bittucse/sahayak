@@ -1,3 +1,4 @@
+import CompanionsList from "@/components/CompanionsList"
 import {
   Accordion,
   AccordionContent,
@@ -50,7 +51,7 @@ const Profile = async() => {
                     {companions.length}
                   </p>
               </div>
-              <div>Lessons completed</div>
+              <div>Companions created</div>
           </div>
 
 
@@ -58,10 +59,16 @@ const Profile = async() => {
       </section>
 
       <Accordion type="single" collapsible>
-  <AccordionItem value="item-1">
-    <AccordionTrigger>Is it accessible?</AccordionTrigger>
+  <AccordionItem value="recent">
+    <AccordionTrigger className=" text-2xl font-bold">Recent Sessions</AccordionTrigger>
     <AccordionContent>
-      Yes. It adheres to the WAI-ARIA design pattern.
+      <CompanionsList title="Recent Sessions" companions={sessionHistory} />
+    </AccordionContent>
+  </AccordionItem>
+  <AccordionItem value="companions">
+    <AccordionTrigger className="text-2xl font-bold">My Companions {`(${companions.length})`}</AccordionTrigger>
+    <AccordionContent>
+      <CompanionsList title="My Companions" companions={companions}/>
     </AccordionContent>
   </AccordionItem>
 </Accordion>
