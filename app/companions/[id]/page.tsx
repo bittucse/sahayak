@@ -27,7 +27,7 @@ const CompanionSession = async ({params}: CompanionSessionpageProps) => {
         <div className=" size-[72px] flex items-center justify-center rounded-lg max-md:hidden" style={
           {backgroundColor: getSubjectColor(subject)}
         }>
-          <Image src={`/icons/${subject}.svg`}  alt={subject} width={35} height={35} />
+          <Image src={`/icons/${subject}.svg`}  alt={subject+title} width={35} height={35} />
         </div>
         <div className=" flex flex-col gap-2">
           <div className="flex items-center gap-2">
