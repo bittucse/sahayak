@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 // this shows all the info about the created companions
 
 import CompanionCard from "@/components/CompanionCard";

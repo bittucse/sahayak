@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import CompanionsList from "@/components/CompanionsList"
 import {
   Accordion,
