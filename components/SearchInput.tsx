@@ -15,32 +15,28 @@ const SearchInput = () => {
     const pathname= usePathname()
     const router = useRouter()
     const searchParams=useSearchParams();
-    const query= searchParams.get('topic') || '';
 
     const [searchQuery, setSearchQuery] = useState('');
 
     useEffect(() =>{
-      const delayDebounceFn= setTimeout(()=>{
+      if(searchQuery){
+          const newUrl = formUrlQuery({
+          params: searchParams.toString(),
+          key: "topic",
+          value: searchQuery,
+        });
 
-        if(searchQuery){
-            const newUrl = formUrlQuery({
+        router.push(newUrl,{scroll: false});
+      } else{
+        if(pathname === '/companions'){
+            const newUrl = removeKeysFromUrlQuery({
             params: searchParams.toString(),
-            key: "topic",
-            value: searchQuery,
+            keysToRemove: ["topic"],
           });
-  
-          router.push(newUrl,{scroll: false});
-        } else{
-          if(pathname === '/companions'){
-              const newUrl = removeKeysFromUrlQuery({
-              params: searchParams.toString(),
-              keysToRemove: ["topic"],
-            });
-  
-            router.push(newUrl, { scroll: false });
-          }
+
+          router.push(newUrl, { scroll: false });
         }
-      },500)
+      }
     },[searchQuery,router,searchParams,pathname]);
 
   return (
